@@ -11,7 +11,7 @@ knitr::opts_chunk$set(cache=TRUE)
 
 
 ## Wstêp
-Celem æwiczenia jest znalezienie regu³ asocjacyjnych dla zbioru opisu grzybów. W æwiczeniu pos³u¿ono siê zbiorem [Mushroom Data Set](https://archive.ics.uci.edu/ml/datasets/Mushroom) zawieraj¹cy opisy fizycznych cech grzybów i ich klasyfikacjê na jadalne i nie jadalne.  
+Celem æwiczenia jest znalezienie regu³ asocjacyjnych dla zbioru opisu grzybów. W æwiczeniu pos³u¿ono siê zbiorem [Mushroom Data Set](https://archive.ics.uci.edu/ml/datasets/Mushroom) zawieraj¹cy opisy fizycznych cech grzybów i ich klasyfikacjê na jadalne i niejadalne.  
 
 Jako, ¿e chcemy zapamiêtaæ regu³y na jadalne grzyby, regu³y te nie mog¹ byæ za d³ugie. St¹d wynika ograniczenie na d³ugoœæ regu³y.
 
