@@ -126,8 +126,8 @@ $(document).ready(function () {
 <div id="wstep" class="section level2">
 <h2>Wstęp</h2>
 <p>Celem ćwiczenia jest znalezienie reguł asocjacyjnych dla zbioru opisu grzybów. W ćwiczeniu posłużono się zbiorem <a href="https://archive.ics.uci.edu/ml/datasets/Mushroom">Mushroom Data Set</a> zawierający opisy fizycznych cech grzybów i ich klasyfikację na jadalne i nie jadalne.</p>
-<p>Jako, że chcemy zapamiętać reguły na jadalne grzyby, reguły te nie mogą być za długie. Z tąd wynika ograniczenie na długość reguły.</p>
-<p>Chcemy też być pewni że znaleziony grzyb na pewno nie będzie trujący. Z tąd warunek na pewność wynoszącą 100%.</p>
+<p>Jako, że chcemy zapamiętać reguły na jadalne grzyby, reguły te nie mogą być za długie. Stąd wynika ograniczenie na długość reguły.</p>
+<p>Chcemy też być pewni że znaleziony grzyb na pewno nie będzie trujący. Stąd warunek na pewność wynoszącą 100%.</p>
 <p>Ważne jest aby podczas wyjścia na spacer znalezeinie grzyba było prawdopodobne musimy założyć odpowiednio wysokie wsparcie.</p>
 </div>
 <div id="algorytm" class="section level2">
@@ -161,143 +161,7 @@ summary(Mushroom)</code></pre>
 ## 1    Class=edible     Class    edible
 ## 2 Class=poisonous     Class poisonous
 ## 3   CapShape=bell  CapShape      bell</code></pre>
-<pre class="r"><code>inspect(head(Mushroom))</code></pre>
-<pre><code>##     items                    
-## [1] {Class=poisonous,        
-##      CapShape=convex,        
-##      CapSurf=smooth,         
-##      CapColor=brown,         
-##      Bruises=bruises,        
-##      Odor=pungent,           
-##      GillAttached=free,      
-##      GillSpace=close,        
-##      GillSize=narrow,        
-##      GillColor=black,        
-##      StalkShape=enlarging,   
-##      StalkRoot=equal,        
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=pendant,       
-##      Spore=black,            
-##      Habitat=urban}          
-## [2] {Class=edible,           
-##      CapShape=convex,        
-##      CapSurf=smooth,         
-##      CapColor=yellow,        
-##      Bruises=bruises,        
-##      Odor=almond,            
-##      GillAttached=free,      
-##      GillSpace=close,        
-##      GillSize=broad,         
-##      GillColor=black,        
-##      StalkShape=enlarging,   
-##      StalkRoot=club,         
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=pendant,       
-##      Spore=brown,            
-##      Population=brown,       
-##      Habitat=grasses}        
-## [3] {Class=edible,           
-##      CapShape=bell,          
-##      CapSurf=smooth,         
-##      CapColor=white,         
-##      Bruises=bruises,        
-##      Odor=anise,             
-##      GillAttached=free,      
-##      GillSpace=close,        
-##      GillSize=broad,         
-##      GillColor=brown,        
-##      StalkShape=enlarging,   
-##      StalkRoot=club,         
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=pendant,       
-##      Spore=brown,            
-##      Population=brown,       
-##      Habitat=meadows}        
-## [4] {Class=poisonous,        
-##      CapShape=convex,        
-##      CapSurf=scaly,          
-##      CapColor=white,         
-##      Bruises=bruises,        
-##      Odor=pungent,           
-##      GillAttached=free,      
-##      GillSpace=close,        
-##      GillSize=narrow,        
-##      GillColor=brown,        
-##      StalkShape=enlarging,   
-##      StalkRoot=equal,        
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=pendant,       
-##      Spore=black,            
-##      Habitat=urban}          
-## [5] {Class=edible,           
-##      CapShape=convex,        
-##      CapSurf=smooth,         
-##      CapColor=gray,          
-##      Bruises=no,             
-##      Odor=none,              
-##      GillAttached=free,      
-##      GillSpace=crowded,      
-##      GillSize=broad,         
-##      GillColor=black,        
-##      StalkShape=tapering,    
-##      StalkRoot=equal,        
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=evanescent,    
-##      Spore=brown,            
-##      Habitat=grasses}        
-## [6] {Class=edible,           
-##      CapShape=convex,        
-##      CapSurf=scaly,          
-##      CapColor=yellow,        
-##      Bruises=bruises,        
-##      Odor=almond,            
-##      GillAttached=free,      
-##      GillSpace=close,        
-##      GillSize=broad,         
-##      GillColor=brown,        
-##      StalkShape=enlarging,   
-##      StalkRoot=club,         
-##      SurfaceAboveRing=smooth,
-##      SurfaceBelowRing=smooth,
-##      ColorAboveRing=white,   
-##      ColorBelowRing=white,   
-##      VeilType=partial,       
-##      VeilColor=white,        
-##      RingNumber=one,         
-##      RingType=pendant,       
-##      Spore=black,            
-##      Population=brown,       
-##      Habitat=grasses}</code></pre>
+<pre class="r"><code>#inspect(head(Mushroom))</code></pre>
 <p>szukanie reguł assocjacyjnych</p>
 <pre class="r"><code>rulesWithRHS &lt;- apriori(Mushroom, parameter = list(support=0.3, confidence = 1.0, minlen =1), 
                         appearance = list(rhs = c(&quot;Class=edible&quot;), default=&quot;lhs&quot;))</code></pre>
@@ -359,7 +223,7 @@ summary(Mushroom)</code></pre>
 </div>
 <div id="podsumowanie" class="section level2">
 <h2>Podsumowanie</h2>
-<p>W wyniku działania algorytmu uzyskaliśmy listę reguł asocjacyjnych dla jadalnych grzybów posortowaną po wsparciu. Lista ta jest łatwa do zapamiętania gdyż jest nie długa (10 pozycji) oraz zawiera małą ilość cech do zapamiętania (od 3 do 4). Użycie takiej listy może być pomocne w decyzji na grzybobraniu.</p>
+<p>W wyniku działania algorytmu uzyskaliśmy listę reguł asocjacyjnych dla jadalnych grzybów posortowaną po wsparciu. Lista ta jest łatwa do zapamiętania gdyż jest niedługa (10 pozycji) oraz zawiera małą ilość cech do zapamiętania (od 3 do 4). Użycie takiej listy może być pomocne w decyzji na grzybobraniu.</p>
 </div>
 
 

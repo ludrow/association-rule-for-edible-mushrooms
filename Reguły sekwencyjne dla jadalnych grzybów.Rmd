@@ -13,9 +13,9 @@ knitr::opts_chunk$set(cache=TRUE)
 ## Wstêp
 Celem æwiczenia jest znalezienie regu³ asocjacyjnych dla zbioru opisu grzybów. W æwiczeniu pos³u¿ono siê zbiorem [Mushroom Data Set](https://archive.ics.uci.edu/ml/datasets/Mushroom) zawieraj¹cy opisy fizycznych cech grzybów i ich klasyfikacjê na jadalne i nie jadalne.  
 
-Jako, ¿e chcemy zapamiêtaæ regu³y na jadalne grzyby, regu³y te nie mog¹ byæ za d³ugie. Z t¹d wynika ograniczenie na d³ugoœæ regu³y.
+Jako, ¿e chcemy zapamiêtaæ regu³y na jadalne grzyby, regu³y te nie mog¹ byæ za d³ugie. St¹d wynika ograniczenie na d³ugoœæ regu³y.
 
-Chcemy te¿ byæ pewni ¿e znaleziony grzyb na pewno nie bêdzie truj¹cy. Z t¹d warunek na pewnoœæ wynosz¹c¹ 100%.
+Chcemy te¿ byæ pewni ¿e znaleziony grzyb na pewno nie bêdzie truj¹cy. St¹d warunek na pewnoœæ wynosz¹c¹ 100%.
 
 Wa¿ne jest aby podczas wyjœcia na spacer znalezeinie grzyba by³o prawdopodobne musimy za³o¿yæ odpowiednio wysokie wsparcie.
 
@@ -32,7 +32,7 @@ zbiór mushroom
 ```{R}
 data("Mushroom")
 summary(Mushroom)
-inspect(head(Mushroom))
+#inspect(head(Mushroom))
 ```
 
 szukanie regu³ assocjacyjnych
