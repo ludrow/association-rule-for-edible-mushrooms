@@ -1,0 +1,47 @@
+---
+title: "Regu³y asocjacyjne dla jadalnych grzybów"
+author: "Ludwik Przyrowski"
+date: "7 maja 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE)
+```
+
+
+## Wstêp
+Celem æwiczenia jest znalezienie regu³ asocjacyjnych dla zbioru opisu grzybów. W æwiczeniu pos³u¿ono siê zbiorem [Mushroom Data Set](https://archive.ics.uci.edu/ml/datasets/Mushroom) zawieraj¹cy opisy fizycznych cech grzybów i ich klasyfikacjê na jadalne i nie jadalne.  
+
+Jako, ¿e chcemy zapamiêtaæ regu³y na jadalne grzyby, regu³y te nie mog¹ byæ za d³ugie. Z t¹d wynika ograniczenie na d³ugoœæ regu³y.
+
+Chcemy te¿ byæ pewni ¿e znaleziony grzyb na pewno nie bêdzie truj¹cy. Z t¹d warunek na pewnoœæ wynosz¹c¹ 100%.
+
+Wa¿ne jest aby podczas wyjœcia na spacer znalezeinie grzyba by³o prawdopodobne musimy za³o¿yæ odpowiednio wysokie wsparcie.
+
+
+## Algorytm
+
+u¿yte biblioteki
+```{R, message=F}
+library(arules) #regu³y asocjacyjne
+library(arulesViz) # wizualizacja regu³
+
+```
+zbiór mushroom
+```{R}
+data("Mushroom")
+summary(Mushroom)
+inspect(head(Mushroom))
+```
+
+szukanie regu³ assocjacyjnych
+```{R}
+rulesWithRHS <- apriori(Mushroom, parameter = list(support=0.3, confidence = 1.0, minlen =1), 
+                        appearance = list(rhs = c("Class=edible"), default="lhs"))
+inspect(head(sort(rulesWithRHS, by="support"),10))
+
+```
+
+## Podsumowanie
+W wyniku dzia³ania algorytmu uzyskaliœmy listê regu³ asocjacyjnych dla jadalnych grzybów posortowan¹ po wsparciu. Lista ta jest ³atwa do zapamiêtania gdy¿ jest nied³uga (10 pozycji) oraz zawiera ma³¹ iloœæ cech do zapamiêtania (od 3 do 4). U¿ycie takiej listy mo¿e byæ pomocne w decyzji na grzybobraniu.
